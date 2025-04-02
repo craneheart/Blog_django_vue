@@ -172,3 +172,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+frontend/dist/
+frontend/node_modules/
+
+backend/db.sqlite3
+**/migrations/
+!**/migrations/__init__.py
