@@ -12,6 +12,5 @@ class Index:
         if application_name in data:
             return TemplateView.as_view(template_name=join(application_name, "index.html"))
         else:
-            # TODO:改为404等页面,
             print("未注册该页面")
-            return None
+            return TemplateView.as_view(template_name=join("default", "unPlugIn.html"))
