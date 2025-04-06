@@ -20,7 +20,7 @@ async def npm_build():
         env=env,
     )
     stdout, stderr = await process.communicate()
-    print("构建完成")
+    print(stdout.decode())
 
 
 def static_files():
