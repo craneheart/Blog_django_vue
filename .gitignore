@@ -179,3 +179,5 @@ frontend/node_modules/
 backend/db.sqlite3
 **/migrations/
 !**/migrations/__init__.py
+test/
+settings/
