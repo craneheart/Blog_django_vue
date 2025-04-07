@@ -169,12 +169,12 @@ def template_maker(root_dir: str, template: dict, application_name: str) -> bool
             dir_path = os.path.join(root_dir, dir_name)
             if not check_and_create_path(dir_path):
                 print(f"警告: 目录 {dir_path} 已存在，将继续使用现有目录")
-                
+
         # 创建所有文件
         for dir_path, files in template["file"].items():
             current_dir = os.path.join(root_dir, dir_path)
             os.makedirs(current_dir, exist_ok=True)
-            
+
             for file_name, content in files.items():
                 # 替换模板中的应用名称
                 content = content.replace("{{app_name}}", application_name)
@@ -209,7 +209,7 @@ def check_and_create_path(dir_path: str) -> bool:
             sys.exit(1)
 
 
-def create_file(file_path:str, content="") -> bool:
+def create_file(file_path: str, content="") -> bool:
     """
     创建并写入文件
     
@@ -224,7 +224,7 @@ def create_file(file_path:str, content="") -> bool:
         # 检查文件是否已存在
         if os.path.exists(file_path):
             print(f"警告: 文件 {file_path} 已存在，将被覆盖")
-            
+
         with open(file_path, 'w', encoding='utf-8') as file:
             file.write(content)
         print(f"创建文件: {file_path}")
@@ -245,14 +245,14 @@ def create_application(application_name: str) -> bool:
         bool: 创建是否成功
     """
     print(f"开始创建应用 '{application_name}'...")
-    
+
     # 设置应用目录路径
     django_app_dir = os.path.join("backend", application_name)
 
     # 检查并创建应用目录
     if not check_and_create_path(django_app_dir):
         print(f"警告: Django应用目录 {django_app_dir} 已存在，可能会覆盖现有文件")
-    
+
     # 使用template_maker创建Django应用结构
     if not template_maker(django_app_dir, DJANGO_APPLICATION_TEMPLATE, application_name):
         print(f"错误: Django应用 '{application_name}' 创建失败")
@@ -260,16 +260,16 @@ def create_application(application_name: str) -> bool:
 
     # 创建 Vue 应用目录
     vue_app_dir = os.path.join("frontend", "src", "pages", application_name)
-    
+
     # 检查并创建Vue应用目录
     if not check_and_create_path(vue_app_dir):
         print(f"警告: Vue应用目录 {vue_app_dir} 已存在，可能会覆盖现有文件")
-    
+
     # 使用template_maker创建Vue应用结构
     if not template_maker(vue_app_dir, VUE_APPLICATION_TEMPLATE, application_name):
         print(f"错误: Vue应用 '{application_name}' 创建失败")
         return False
-        
+
     print(f"应用 '{application_name}' 创建成功!")
     print(f"Django应用路径: {os.path.abspath(django_app_dir)}")
     print(f"Vue应用路径: {os.path.abspath(vue_app_dir)}")
@@ -289,48 +289,48 @@ def is_valid_application_name(name):
     # 检查应用名称是否包含非法字符
     invalid_chars = ['/', '\\', ':', '*', '?', '"', '<', '>', '|', ' ', '-']
     django_reserved_names = ['django', 'test', 'admin', 'auth', 'contenttypes', 'sessions', 'messages', 'staticfiles']
-    
+
     # 检查是否为空或只包含空格
     if not name or name.isspace():
         return False, "应用名称不能为空"
-    
+
     # 检查开头和结尾是否有空格
     if name != name.strip():
         return False, "应用名称不能以空格开头或结尾"
-    
+
     # 检查非法字符
     for char in invalid_chars:
         if char in name:
             return False, f"应用名称不能包含非法字符: '{char}'"
-    
+
     # 检查是否以数字开头
     if name[0].isdigit():
         return False, "应用名称不能以数字开头"
-    
+
     # 检查是否以点结尾（Windows系统限制）
     if name.endswith('.'):
         return False, "应用名称不能以点(.)结尾"
-    
+
     # 检查是否是Django保留名称
     if name.lower() in django_reserved_names:
         return False, f"'{name}'是Django的保留名称，请使用其他名称"
-    
+
     return True, ""
 
 
 def main():
     """主函数，处理用户输入并创建应用"""
     print("=== Django-Vue应用创建工具 ===")
-    
+
     while True:
         application_name = input("\n请输入应用名称 (输入'q'退出): ").strip()
-        
+
         if application_name.lower() == 'q':
             print("退出应用创建")
             break
-            
+
         valid, error_msg = is_valid_application_name(application_name)
-        
+
         if valid:
             confirm = input(f"将创建应用 '{application_name}'，确认? (y/n): ").strip().lower()
             if confirm == 'y':

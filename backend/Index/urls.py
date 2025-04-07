@@ -3,6 +3,6 @@ from .views import api
 from vue.vue import Index
 
 urlpatterns = [
-    re_path(r'^(?!api/).*$', Index.get("Documents")),
+    re_path(r'^(?!api/).*$', Index.get("Index")),
     path("api/", include(api)),
 ]

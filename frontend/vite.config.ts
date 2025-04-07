@@ -16,14 +16,14 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url))
         },
     },
-    build: {
-        assetsDir: "static",
-        rollupOptions: {
+    build:{
+        assetsDir:"static",
+        rollupOptions:{
             input: {
                 main: resolve(__dirname, 'index.html'),
-                document: resolve(__dirname, 'src/pages/Documents/index.html'),
                 index: resolve(__dirname, 'src/pages/Index/index.html'),
-            }
+                document: resolve(__dirname, 'src/pages/Documents/index.html'),
+            },
         }
     }
 })
