@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import {createRouter, createWebHashHistory} from 'vue-router'
 import HomeView from "../views/HomeView.vue"
 
 // 为MPA形式定义路由
@@ -8,7 +8,7 @@ const routes = [
         path: '/',
         name: 'home',
         component: HomeView,
-        meta:{
+        meta: {
             title: '首页',
         }
     },
