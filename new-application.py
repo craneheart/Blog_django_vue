@@ -113,7 +113,7 @@ DJANGO_APPLICATION_TEMPLATE = {
             "__init__.py": "",
             "admin.py": "from django.contrib import admin\n\n# Register your models here.",
             "apps.py": "from django.apps import AppConfig\n\n\nclass {{app_name}}Config(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = '{{app_name}}'",
-            "urls.py": "from django.urls import path\n\nurlpatterns = []",
+            "urls.py": "from django.urls import path, include, re_path\nfrom .views import api\nfrom vue.vue import Index\n\nurlpatterns = [\n    re_path(r'^(?!api/).*$', Index.get(\"{{app_name}}\")),\n    path(\"api/\", include(api)),\n]",
         },
         "migrations": {
             "__init__.py": "",
