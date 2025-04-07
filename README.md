@@ -6,7 +6,7 @@
 
 ## 简介
 
-使用Django作为后端, vue作为前端框架的一种MPA解决方案,
+使用Django作为后端, vue作为前端框架的一种Multi-Page Applications (MPA)解决方案,
 
 ### 亮点
 
@@ -50,14 +50,15 @@ vue目录结构如下
 
 ```
 
-- `default` : 存放默认页面的页面,如vue.py未找到该应用,返回的页面
-- `index.html` : vue application入口 index.html
-- `application.json` : 运行`pkg-frontend.py`自动生成的 vue application 注册json
-- `vue` : 主要的包, 作用是简化index.html的路由注册
+- **`default`** : 存放默认页面的页面,如vue.py未找到该应用,返回的页面
+- **`index.html`** : vue application入口 index.html
+- **`application.json`** : 运行`pkg-frontend.py`自动生成的 vue application 注册json
+- **`vue`** : 主要的包, 作用是简化index.html的路由注册
 
 ### Vue3
 
 页面的设置在`vite.config.js`中
+
 然后页面的结构src如下
 
 ```
@@ -135,6 +136,9 @@ APPLICATION_LIST = [
 ```
 
 ### 自动创建
+
+使用`pkg-frontend.py`脚本, 自动创建vue application和django application
+直接运行脚本, 根据提示输入application的名称, 然后就会自动创建vue application和django application
 
 - 注意:你的application名, 需要和你在vue中创建的application名一致,路径名(`/frotend/src/pages/appplication名`目录下)
   也需要一致,区分大小写
