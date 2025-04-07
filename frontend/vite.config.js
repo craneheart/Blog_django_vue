@@ -22,6 +22,7 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'index.html'),
                 document: resolve(__dirname, 'src/pages/Documents/index.html'),
+                index: resolve(__dirname, 'src/pages/Index/index.html'),
             }
         }
     }

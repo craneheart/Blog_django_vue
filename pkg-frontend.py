@@ -4,6 +4,7 @@ import json
 
 APPLICATION_LIST = [
     "Documents",
+    "Index",
 ]
 NPM_PATH = "/home/crane/.config/JetBrains/PyCharm2024.3/node/versions/20.15.0/bin/npm"
 NODE_DIR = os.path.dirname(NPM_PATH)
