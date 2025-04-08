@@ -37,11 +37,19 @@
       </button>
     </section>
   </div>
+  <div class="grid place-content-center p-8">
+    <RippleButton> Click me! </RippleButton>
+  </div>
+  <div class="grid place-content-center p-8">
+    <InteractiveHoverButton text="Click me!"></InteractiveHoverButton>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { reactive, computed } from "vue";
 import MultiStepLoader from "@/pages/Index/components/MultiStepLoader.vue";
+import RippleButton from "@/components/RippleButton.vue";
+import InteractiveHoverButton from "@/components/InteractiveHoverButton.vue";
 
 interface Step {
   text: string; // Display text for the step
